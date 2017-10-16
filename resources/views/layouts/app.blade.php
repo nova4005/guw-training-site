@@ -42,8 +42,8 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">Languages <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="">PHP</a></li>
-                                <li><a href="">jQuery</a></li>
+                                <li><a href="{{ url('/php') }}">PHP</a></li>
+                                <li><a href="{{ url('/jquery') }}">jQuery</a></li>
                             </ul>
                         </li>
                     @endauth

@@ -18,3 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+//Languages Routes
+Route::get('/php', function() {
+    return view('languages.php');
+});
+
+Route::get('/jquery', function() {
+    return view('languages.jquery');
+});
