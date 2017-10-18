@@ -23,8 +23,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Languages Routes
 Route::get('/php', function() {
     return view('languages.php');
-});
+})->middleware('auth');
 
 Route::get('/jquery', function() {
     return view('languages.jquery');
-});
+})->middleware('auth');
