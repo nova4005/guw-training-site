@@ -13,3 +13,11 @@
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
 @import "node_modules/bootswatch/darkly/bootswatch";
+
+select {
+  color: #484848;
+}
+
+.hintBtn, .hintBox {
+  margin-top: 10px;
+}

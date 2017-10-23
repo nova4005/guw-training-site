@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -6,6 +5,7 @@
  */
 
 require('./bootstrap');
+require('../../../node_modules/bootstrap-sass/assets/javascripts/bootstrap/alert.js');
 
 window.Vue = require('vue');
 
@@ -16,7 +16,20 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+// Vue.component('hint-component', require('./components/HintComponent.vue'));
 
-const app = new Vue({
-    el: '#app'
+// const app = new Vue({
+//     el: '#app'
+// });
+
+new Vue({
+    el: '#app',
+    data: {
+        hints: [{value: ''}]
+    },
+    methods: {
+        addHint: function () {
+            this.hints.push({value: ''});
+        }
+    }
 });

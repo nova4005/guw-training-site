@@ -963,13 +963,12 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(10);
-module.exports = __webpack_require__(42);
+module.exports = __webpack_require__(43);
 
 
 /***/ }),
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
-
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -978,8 +977,9 @@ module.exports = __webpack_require__(42);
  */
 
 __webpack_require__(11);
+__webpack_require__(35);
 
-window.Vue = __webpack_require__(35);
+window.Vue = __webpack_require__(36);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -987,10 +987,23 @@ window.Vue = __webpack_require__(35);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', __webpack_require__(38));
+Vue.component('example-component', __webpack_require__(39));
+// Vue.component('hint-component', require('./components/HintComponent.vue'));
 
-var app = new Vue({
-  el: '#app'
+// const app = new Vue({
+//     el: '#app'
+// });
+
+new Vue({
+    el: '#app',
+    data: {
+        hints: [{ value: '' }]
+    },
+    methods: {
+        addHint: function addHint() {
+            this.hints.push({ value: '' });
+        }
+    }
 });
 
 /***/ }),
@@ -31690,6 +31703,106 @@ module.exports = function spread(callback) {
 
 /***/ }),
 /* 35 */
+/***/ (function(module, exports) {
+
+/* ========================================================================
+ * Bootstrap: alert.js v3.3.7
+ * http://getbootstrap.com/javascript/#alerts
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+
++function ($) {
+  'use strict';
+
+  // ALERT CLASS DEFINITION
+  // ======================
+
+  var dismiss = '[data-dismiss="alert"]'
+  var Alert   = function (el) {
+    $(el).on('click', dismiss, this.close)
+  }
+
+  Alert.VERSION = '3.3.7'
+
+  Alert.TRANSITION_DURATION = 150
+
+  Alert.prototype.close = function (e) {
+    var $this    = $(this)
+    var selector = $this.attr('data-target')
+
+    if (!selector) {
+      selector = $this.attr('href')
+      selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
+    }
+
+    var $parent = $(selector === '#' ? [] : selector)
+
+    if (e) e.preventDefault()
+
+    if (!$parent.length) {
+      $parent = $this.closest('.alert')
+    }
+
+    $parent.trigger(e = $.Event('close.bs.alert'))
+
+    if (e.isDefaultPrevented()) return
+
+    $parent.removeClass('in')
+
+    function removeElement() {
+      // detach from parent, fire event then clean up data
+      $parent.detach().trigger('closed.bs.alert').remove()
+    }
+
+    $.support.transition && $parent.hasClass('fade') ?
+      $parent
+        .one('bsTransitionEnd', removeElement)
+        .emulateTransitionEnd(Alert.TRANSITION_DURATION) :
+      removeElement()
+  }
+
+
+  // ALERT PLUGIN DEFINITION
+  // =======================
+
+  function Plugin(option) {
+    return this.each(function () {
+      var $this = $(this)
+      var data  = $this.data('bs.alert')
+
+      if (!data) $this.data('bs.alert', (data = new Alert(this)))
+      if (typeof option == 'string') data[option].call($this)
+    })
+  }
+
+  var old = $.fn.alert
+
+  $.fn.alert             = Plugin
+  $.fn.alert.Constructor = Alert
+
+
+  // ALERT NO CONFLICT
+  // =================
+
+  $.fn.alert.noConflict = function () {
+    $.fn.alert = old
+    return this
+  }
+
+
+  // ALERT DATA-API
+  // ==============
+
+  $(document).on('click.bs.alert.data-api', dismiss, Alert.prototype.close)
+
+}(jQuery);
+
+
+/***/ }),
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42255,10 +42368,10 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(36).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(37).setImmediate))
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -42311,13 +42424,13 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(37);
+__webpack_require__(38);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -42510,15 +42623,15 @@ exports.clearImmediate = clearImmediate;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(4)))
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(39)
+var normalizeComponent = __webpack_require__(40)
 /* script */
-var __vue_script__ = __webpack_require__(40)
+var __vue_script__ = __webpack_require__(41)
 /* template */
-var __vue_template__ = __webpack_require__(41)
+var __vue_template__ = __webpack_require__(42)
 /* template functional */
   var __vue_template_functional__ = false
 /* styles */
@@ -42558,7 +42671,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -42667,7 +42780,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42696,7 +42809,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -42739,7 +42852,7 @@ if (false) {
 }
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

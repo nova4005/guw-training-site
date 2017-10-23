@@ -19,6 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Forms
+Route::get('/add-problem', 'ProblemController@create')->name('createproblem');
+Route::post('/save-problem', 'ProblemController@store')->name('saveproblem');
 
 //Languages Routes
 Route::get('/php', function() {

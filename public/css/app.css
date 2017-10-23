@@ -8693,3 +8693,12 @@ a.list-group-item-danger.active:focus {
   background-color: #464545;
 }
 
+select {
+  color: #484848;
+}
+
+.hintBtn,
+.hintBox {
+  margin-top: 10px;
+}
+

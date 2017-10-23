@@ -82,6 +82,14 @@
             </div>
         </div>
     </nav>
+    @if (session('status'))
+        <div class="flash alert alert-{{ session('status') }} alert-dismissible show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <p>{{ session('message') }}</p>
+        </div>
+    @endif
 
     @yield('content')
 </div>
