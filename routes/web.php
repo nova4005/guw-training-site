@@ -24,10 +24,4 @@ Route::get('/add-problem', 'ProblemController@create')->name('createproblem');
 Route::post('/save-problem', 'ProblemController@store')->name('saveproblem');
 
 //Languages Routes
-Route::get('/php', function() {
-    return view('languages.php');
-})->middleware('auth');
-
-Route::get('/jquery', function() {
-    return view('languages.jquery');
-})->middleware('auth');
+Route::get("/problems/{problem}", "ProblemController@index")->name('problems');

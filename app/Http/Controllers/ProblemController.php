@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class ProblemController extends Controller
 {
+    public function index($problem)
+    {
+        $problemList = Problem::where('type', $problem)->with('hints')->get();
+
+        return view('languages.index', compact('problemList') );
+    }
+
     public function create()
     {
         return view('forms.problemadd');
