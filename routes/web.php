@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Forms
-Route::get('/add-problem', 'ProblemController@create')->name('createproblem');
+Route::get('/add-problem', 'ProblemController@create')->name('createproblem')->middleware('auth');
 Route::post('/save-problem', 'ProblemController@store')->name('saveproblem');
 
 //Languages Routes

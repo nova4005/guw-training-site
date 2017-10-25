@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Problem;
 use App\Hint;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProblemController extends Controller
 {
@@ -17,7 +18,11 @@ class ProblemController extends Controller
 
     public function create()
     {
-        return view('forms.problemadd');
+        if(Auth::user()->user_level == 10) {
+            return view('forms.problemadd');
+        }
+
+        return redirect()->route('home')->with('status', 'warning')->with('message', 'You are not allowed to view that resource.');
     }
 
     public function store(Request $request)
