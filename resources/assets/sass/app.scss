@@ -1,5 +1,5 @@
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url("https://fonts.googleapis.com/css?family=Raleway:100,300,400,600");
 //// Variables
 @import "variables";
 //
@@ -18,13 +18,9 @@ select {
 }
 
 //Home Page Styles
-.full-height {
-  height: 100vh;
-}
-
 .flex-center {
   align-items: center;
-  display: flex;
+  display: block;
   justify-content: center;
 }
 
@@ -43,5 +39,6 @@ select {
 .m-b-md {
   margin-bottom: 30px;
   font-family: 'Raleway', sans-serif;
-  font-weight: 300;
+  font-weight: 100;
 }
+
