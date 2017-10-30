@@ -16,4 +16,9 @@ class Problem extends Model
     {
         return $this->hasMany('App\Hint');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User')->withTimestamps()->using('App\UserProblem');
+    }
 }

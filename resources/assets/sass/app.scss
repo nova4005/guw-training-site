@@ -1,17 +1,12 @@
-
 // Fonts
-//@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-
+@import url("https://fonts.googleapis.com/css?family=Raleway:100,300,400,600");
 //// Variables
 @import "variables";
 //
 //// Bootstrap
 //@import "~bootstrap-sass/assets/stylesheets/bootstrap";
-
 @import "node_modules/bootswatch/darkly/variables";
-
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-
 @import "node_modules/bootswatch/darkly/bootswatch";
 
 select {
@@ -20,4 +15,34 @@ select {
 
 .hintBtn, .hintBox {
   margin-top: 10px;
+}
+
+//Home Page Styles
+.flex-center {
+  align-items: center;
+  display: block;
+  justify-content: center;
+}
+
+.position-ref {
+  position: relative;
+}
+
+.content {
+  text-align: center;
+}
+
+.title {
+  font-size: 84px;
+}
+
+.m-b-md {
+  margin-bottom: 30px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+}
+
+.language-wrapper {
+    display: flex;
+    justify-content: space-between;
 }

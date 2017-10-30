@@ -997,12 +997,33 @@ Vue.component('example-component', __webpack_require__(39));
 new Vue({
     el: '#app',
     data: {
-        hints: [{ value: '' }]
+        hints: [{ value: '' }],
+        problem: []
     },
     methods: {
         addHint: function addHint() {
             this.hints.push({ value: '' });
+        },
+        updateCheckForProblem: function updateCheckForProblem(res) {
+            res.data.status == 'true' ? 'true' : 'false';
+        },
+        toggleProblemCompletion: function toggleProblemCompletion(e) {
+            var _this = this;
+
+            axios.post('problem-completion', { pid: e.target.value }).then(function (res) {
+                _this.updateCheckForProblem(res);
+            }).catch(function (err) {
+                return console.error(err);
+            });
         }
+        // checkIfCompleted: function(value) {
+        //     console.log(this.problem);
+        //     return "Egg";
+        //     // axios.get('problem-completion-check/?pid=' +  e.target.value).then( (res) => {
+        //     //     // this.updateCheckForProblem(res);
+        //     //     return 'Chicken';
+        //     // });
+        // }
     }
 });
 

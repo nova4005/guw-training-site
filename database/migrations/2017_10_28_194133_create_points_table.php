@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHintsTable extends Migration
+class CreatePointsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateHintsTable extends Migration
      */
     public function up()
     {
-        Schema::create('hints', function (Blueprint $table) {
+        Schema::create('problem_user', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->integer('problem_id')->unsigned();
             $table->foreign('problem_id')->references('id')->on('problems');
-            $table->text('hint')->nullable();
+            $table->unique(array('user_id', 'problem_id'));
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateHintsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hints');
+        Schema::dropIfExists('problem_user');
     }
 }

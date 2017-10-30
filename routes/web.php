@@ -18,10 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/leaderboard', 'ProblemController@leaders')->name('leaders');
 
 //Forms
 Route::get('/add-problem', 'ProblemController@create')->name('createproblem')->middleware('auth');
 Route::post('/save-problem', 'ProblemController@store')->name('saveproblem');
+Route::post('/problems/problem-completion', 'UserProblemController@store')->name('completeproblem');
+Route::get('/problems/problem-completion-check', 'UserProblemController@problem_status')->name('problemstatus');
 
 //Languages Routes
-Route::get("/problems/{problem}", "ProblemController@index")->name('problems');
+Route::get("/problems/{problem}", "ProblemController@index")->name('problems')->middleware('auth');

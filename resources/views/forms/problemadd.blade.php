@@ -18,9 +18,13 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label for="points">Points</label>
+                    <input type="number" name="points" class="form-control" required value="0"/>
+                </div>
+                <div class="form-group">
                     <label for="hint">Hint</label>
                     <div v-for="hint in hints">
-                        <textarea name="hint[]" class="form-control hintBox" v-model="hint.value" required></textarea>
+                        <textarea name="hint[]" class="form-control hintBox" v-model="hint.value"></textarea>
                     </div>
                     <a @click="addHint" class="btn btn-info btn-xs hintBtn">New Hint</a>
                 </div>
