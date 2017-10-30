@@ -17,6 +17,7 @@ class CreateProblemsTable extends Migration
             $table->increments('id');
             $table->text('question');
             $table->string('type');
+            $table->integer('points')->default(0);
             $table->timestamps();
         });
     }

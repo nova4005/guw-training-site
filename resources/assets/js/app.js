@@ -25,11 +25,28 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 new Vue({
     el: '#app',
     data: {
-        hints: [{value: ''}]
+        hints: [{value: ''}],
+        problem: []
     },
     methods: {
-        addHint: function () {
+        addHint: function() {
             this.hints.push({value: ''});
+        },
+        updateCheckForProblem: function(res) {
+            (res.data.status == 'true') ? 'true' : 'false';
+        },
+        toggleProblemCompletion: function(e) {
+            axios.post('problem-completion', {pid: e.target.value}).then( (res) => {
+                this.updateCheckForProblem(res);
+            }).catch( (err) => console.error(err));
         }
+        // checkIfCompleted: function(value) {
+        //     console.log(this.problem);
+        //     return "Egg";
+        //     // axios.get('problem-completion-check/?pid=' +  e.target.value).then( (res) => {
+        //     //     // this.updateCheckForProblem(res);
+        //     //     return 'Chicken';
+        //     // });
+        // }
     }
 });

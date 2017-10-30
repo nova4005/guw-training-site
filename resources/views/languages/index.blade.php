@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+{{--        {{ dd($problemRelations) }}--}}
         @forelse($problemList as $index => $problem)
             @if( ( ($index + 1) % 2) == 0)
                 <div class="container">
@@ -9,7 +10,18 @@
             @endif
                 <div class="col-md-6">
                     <div class="panel panel-default">
-                        <div class="panel-heading">{{ $problem->type }}</div>
+                        <div class="panel-heading language-wrapper">{{ $problem->type }}
+                            <span class="align-right">Available Points: {{ $problem->points }} &nbsp;
+                                @foreach($problemRelations as $relation)
+                                    @if($relation->pivot->problem_id == $problem->id)
+                                        <?php $checked = 'checked'; ?>
+                                        @break
+                                    @else
+                                        <?php $checked = ''; ?>
+                                    @endif
+                                @endforeach
+                                <input type="checkbox" @click="toggleProblemCompletion($event)" name="{{ $problem->question }}" {{ $checked }} value="{{ $problem->id }}" >
+                            </span></div>
                         <div class="panel-body">
                             <h4><strong>Question:</strong> {{ $problem->question }}</h4>
                             <hr>

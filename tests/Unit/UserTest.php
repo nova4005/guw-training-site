@@ -41,7 +41,7 @@ class UserTest extends TestCase
 
     public function testUnAuthenticatedUserMayNotSeeALanguageTemplate()
     {
-        $response = $this->get('/php');
+        $response = $this->get('/problems/php');
 
         $response->assertRedirect('/login');
     }
