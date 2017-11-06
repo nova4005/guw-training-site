@@ -12,6 +12,8 @@ class Problem extends Model
         return 'type';
     }
 
+    protected $fillable = ['question', 'type', 'points'];
+
     public function hints()
     {
         return $this->hasMany('App\Hint');
