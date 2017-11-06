@@ -15,38 +15,55 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-// Vue.component('hint-component', require('./components/HintComponent.vue'));
+// Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('hint-component', require('./components/HintsComponent.vue'));
+Vue.component('type-component', require('./components/TypesComponent.vue'));
 
-// const app = new Vue({
-//     el: '#app'
-// });
-
-new Vue({
+const app = new Vue({
     el: '#app',
     data: {
-        hints: [{value: ''}],
-        problem: []
+        hints: [{value: ''}]
     },
     methods: {
-        addHint: function() {
+        addHint: function () {
             this.hints.push({value: ''});
         },
-        updateCheckForProblem: function(res) {
+        updateCheckForProblem: function (res) {
             (res.data.status == 'true') ? 'true' : 'false';
         },
-        toggleProblemCompletion: function(e) {
-            axios.post('problem-completion', {pid: e.target.value}).then( (res) => {
+        toggleProblemCompletion: function (e) {
+            axios.post('problem-completion', {pid: e.target.value}).then((res) => {
                 this.updateCheckForProblem(res);
-            }).catch( (err) => console.error(err));
+            }).catch((err) => console.error(err));
         }
-        // checkIfCompleted: function(value) {
-        //     console.log(this.problem);
-        //     return "Egg";
-        //     // axios.get('problem-completion-check/?pid=' +  e.target.value).then( (res) => {
-        //     //     // this.updateCheckForProblem(res);
-        //     //     return 'Chicken';
-        //     // });
-        // }
     }
 });
+
+// new Vue({
+//     el: '#app',
+//     data: {
+//         hints: [{value: ''}],
+//         problem: []
+//     },
+//     methods: {
+//         addHint: function() {
+//             this.hints.push({value: ''});
+//         },
+//         updateCheckForProblem: function(res) {
+//             (res.data.status == 'true') ? 'true' : 'false';
+//         },
+//         toggleProblemCompletion: function(e) {
+//             axios.post('problem-completion', {pid: e.target.value}).then( (res) => {
+//                 this.updateCheckForProblem(res);
+//             }).catch( (err) => console.error(err));
+//         }
+//         // checkIfCompleted: function(value) {
+//         //     console.log(this.problem);
+//         //     return "Egg";
+//         //     // axios.get('problem-completion-check/?pid=' +  e.target.value).then( (res) => {
+//         //     //     // this.updateCheckForProblem(res);
+//         //     //     return 'Chicken';
+//         //     // });
+//         // }
+//     }
+// });

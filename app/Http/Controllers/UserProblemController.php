@@ -68,38 +68,4 @@ class UserProblemController extends Controller
 
         return json_encode(['status' => false]);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\UserProblem $point
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(UserProblem $point)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\UserProblem $point
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, UserProblem $point)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\UserProblem $point
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(UserProblem $point)
-    {
-        //
-    }
 }
